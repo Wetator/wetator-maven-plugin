@@ -6,7 +6,7 @@ This is a Maven plugin for executing Wetator tests.
 You can find the Wetator homepage at [http://www.wetator.org/](http://www.wetator.org/).
 
 ## Build Status ##
-[![Build Status](https://travis-ci.org/Wetator/wetator-maven-plugin.svg?branch=master)](https://travis-ci.org/Wetator/wetator-maven-plugin)
+[![Build Status](https://travis-ci.org/Wetator/wetator-maven-plugin.svg?branch=master)](https://travis-ci.org/Wetator/wetator-maven-plugin) [![Coverage Status](https://coveralls.io/repos/github/Wetator/wetator-maven-plugin/badge.svg?branch=master)](https://coveralls.io/github/Wetator/wetator-maven-plugin?branch=master)
 
 
 ## Usage ##
