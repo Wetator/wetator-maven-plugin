@@ -1,4 +1,4 @@
-package org.wetator;
+package org.wetator.maven;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
