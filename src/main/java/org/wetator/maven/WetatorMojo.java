@@ -102,8 +102,10 @@ public class WetatorMojo extends AbstractMojo {
         final WetatorEngine wetatorEngine = new WetatorEngine();
         try {
             wetatorEngine.setConfigFileName(configFile);
-
             wetatorEngine.setExternalProperties(externalConfigurations);
+
+            final IProgressListener tmpProgressListener = new StdOutProgressListener();
+            wetatorEngine.addProgressListener(tmpProgressListener);
 
             wetatorEngine.init();
 
@@ -115,9 +117,6 @@ public class WetatorMojo extends AbstractMojo {
             }
 
             getLog().info("Executing tests...");
-
-            final IProgressListener tmpProgressListener = new StdOutProgressListener();
-            wetatorEngine.addProgressListener(tmpProgressListener);
 
             wetatorEngine.executeTests();
 
