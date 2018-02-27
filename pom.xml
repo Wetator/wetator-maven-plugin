@@ -10,21 +10,57 @@
 
     <name>wetator-maven-plugin Maven Plugin</name>
 
-    <description>Plugin to run Wetator tests with Maven. The Wetator homepage: http://www.wetator.org/</description>
+    <description>Plugin to run Wetator tests with Maven. The Wetator homepage: http://www.wetator.org</description>
 
-    <url>https://github.com/wetator/wetator-maven-plugin</url>
+    <url>https://github.com/Wetator/wetator-maven-plugin</url>
 
     <licenses>
-        <!-- TODO -->
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <comments>A business-friendly OSS license</comments>
+            <distribution>repo</distribution>
+        </license>
     </licenses>
 
+    <issueManagement>
+        <url>https://github.com/Wetator/wetator-maven-plugin/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
     <scm>
-        <!-- TODO -->
+        <connection>scm:git:https://github.com/Wetator/wetator-maven-plugin.git</connection>
+        <developerConnection>scm:git:https://github.com/Wetator/wetator-maven-plugin.git</developerConnection>
+        <url>https://github.com/Wetator/wetator-maven-plugin</url>
     </scm>
 
     <developers>
-        <!-- TODO -->
+        <developer>
+            <id>Treppenhouse</id>
+            <name>Malte Mauelshagen</name>
+            <url>https://github.com/Treppenhouse</url>
+        </developer>
+        <developer>
+            <id>rbri</id>
+            <name>Ronald Brill</name>
+            <url>https://github.com/rbri</url>
+        </developer>
+        <developer>
+            <id>cheffe</id>
+            <name>Christian Effertz</name>
+            <url>https://github.com/cheffe</url>
+        </developer>
     </developers>
+
+    <contributors>
+        <contributor>
+            <name>Michael Stähler</name>
+            <url>https://github.com/fred4jupiter</url>
+            <roles>
+                <role>original author</role>
+            </roles>
+        </contributor>
+    </contributors>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
