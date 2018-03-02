@@ -31,8 +31,10 @@ public class WetatorMojo extends AbstractMojo {
     /**
      * File patterns for the wetator test files.
      */
-    static final String[] DEFAULT_INCLUDE_PATTERN = new String[] { WET_FILE_PATTERN, WETT_FILE_PATTERN, XLS_FILE_PATTERN, XLSX_FILE_PATTERN };
-    static final String[] DEFAULT_EXCLUDE_PATTERN = new String[] {};
+    static final String[] DEFAULT_INCLUDE_PATTERN = new String[]{
+            WET_FILE_PATTERN, WETT_FILE_PATTERN, XLS_FILE_PATTERN,
+            XLSX_FILE_PATTERN};
+    static final String[] DEFAULT_EXCLUDE_PATTERN = new String[]{};
 
     /**
      * Path with filename to the config file in file system.
@@ -52,16 +54,15 @@ public class WetatorMojo extends AbstractMojo {
      * Default values (when this is left empty) are:
      * {@value DEFAULT_INCLUDE_PATTERN}
      */
-    @Parameter(property = "execute.includePattern")
-    private String[] includePattern;
+    @Parameter
+    private String[] includes;
 
     /**
      * Filename patterns for the test files that shall be included.
      * <p>
      * Default is: {@value DEFAULT_EXCLUDE_PATTERN}
      */
-    @Parameter(property = "execute.excludePattern")
-    private String[] excludePattern;
+    private String[] excludes;
 
     /**
      * The URL to the website under test.
@@ -73,31 +74,35 @@ public class WetatorMojo extends AbstractMojo {
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        // Need to set the default values of array/list parameter manually as this is
+        // Need to set the default values of array/list parameter manually as
+        // this is
         // not possible via the annotations.
         // See:
         // https://stackoverflow.com/questions/1659087/how-to-configure-defaults-for-a-parameter-with-multiple-values-for-a-maven-plugi
-        if (includePattern == null || includePattern.length == 0) {
-            includePattern = DEFAULT_INCLUDE_PATTERN;
+        if (includes == null || includes.length == 0) {
+            includes = DEFAULT_INCLUDE_PATTERN;
         }
-        if (excludePattern == null || excludePattern.length == 0) {
-            excludePattern = DEFAULT_EXCLUDE_PATTERN;
+        if (excludes == null || excludes.length == 0) {
+            excludes = DEFAULT_EXCLUDE_PATTERN;
         }
 
-        // this map contains the configuration parameter for the wetator engine that
+        // this map contains the configuration parameter for the wetator engine
+        // that
         // overwrites the parameter from the configuration file
         Map<String, String> externalConfigurations = new TreeMap<>();
-        if(baseUrl != null) {
-            externalConfigurations.put(WetatorConfiguration.PROPERTY_BASE_URL, baseUrl);
+        if (baseUrl != null) {
+            externalConfigurations.put(WetatorConfiguration.PROPERTY_BASE_URL,
+                    baseUrl);
         }
 
         getLog().info("start running wetator tests ...");
         getLog().info("using config file: " + configFile);
         getLog().info("using wetator test file directory: " + testFileDir);
-        getLog().info("using include pattern: " + Arrays.toString(includePattern));
-        getLog().info("using exclude pattern: " + Arrays.toString(excludePattern));
-        getLog().info("using base URL: " + externalConfigurations.get(WetatorConfiguration.PROPERTY_BASE_URL));
-
+        getLog().info("using include pattern: " + Arrays.toString(includes));
+        getLog().info(
+                "using exclude pattern: " + Arrays.toString(excludes));
+        getLog().info("using base URL: " + externalConfigurations
+                .get(WetatorConfiguration.PROPERTY_BASE_URL));
 
         final WetatorEngine wetatorEngine = new WetatorEngine();
         try {
@@ -109,18 +114,22 @@ public class WetatorMojo extends AbstractMojo {
 
             wetatorEngine.init();
 
-            final String[] wetatorTestFilenames = scanForWetatorTestFiles(testFileDir, includePattern, excludePattern);
-            getLog().info(wetatorTestFilenames.length + " test files were found!");
+            final String[] wetatorTestFilenames = scanForWetatorTestFiles(
+                    testFileDir, includes, excludes);
+            getLog().info(
+                    wetatorTestFilenames.length + " test files were found!");
             for (String weatorTestFilename : wetatorTestFilenames) {
                 getLog().info("adding test file: " + weatorTestFilename);
-                wetatorEngine.addTestCase(weatorTestFilename, new File(testFileDir, weatorTestFilename));
+                wetatorEngine.addTestCase(weatorTestFilename,
+                        new File(testFileDir, weatorTestFilename));
             }
 
             getLog().info("Executing tests...");
 
             wetatorEngine.executeTests();
 
-            getLog().info("find wetator test results in: " + wetatorEngine.getConfiguration().getOutputDir().getCanonicalPath());
+            getLog().info("find wetator test results in: " + wetatorEngine
+                    .getConfiguration().getOutputDir().getCanonicalPath());
             getLog().info("wetator test execution complete!");
 
         } catch (final Exception e) {
@@ -135,8 +144,8 @@ public class WetatorMojo extends AbstractMojo {
     }
 
     /**
-     * Scans the given directory and finds all files that match the given include
-     * and exclude patterns.
+     * Scans the given directory and finds all files that match the given
+     * include and exclude patterns.
      *
      * @param pTestFileDir
      *            directory of the test files
@@ -148,7 +157,8 @@ public class WetatorMojo extends AbstractMojo {
      *            filename pattern
      * @return the name of all test files that were found
      */
-    String[] scanForWetatorTestFiles(String pTestFileDir, String[] pIncludePattern, String[] pExcludePattern) {
+    String[] scanForWetatorTestFiles(String pTestFileDir,
+            String[] pIncludePattern, String[] pExcludePattern) {
         final DirectoryScanner directoryScanner = new DirectoryScanner();
         directoryScanner.setBasedir(pTestFileDir);
         directoryScanner.setIncludes(pIncludePattern);

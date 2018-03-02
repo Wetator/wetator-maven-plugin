@@ -9,30 +9,38 @@ You can find the Wetator homepage at [http://www.wetator.org](http://www.wetator
 
 
 ## Usage
-To use the plugin you have to add this to your Maven pom.xml plugins section:
+To use the plugin you have to add to the `<build><plugins>` section of your `pom.xml`. See the sample code below to have the wetator tests run during the `integration-test` phase.
 
 ```xml
 <plugin>
     <groupId>org.wetator.maven</groupId>
     <artifactId>wetator-maven-plugin</artifactId>
-    <version>1.0.3</version>
+    <version>1.1.0</version>
     <configuration>
         <configFile>src/test/resources/wetator.config</configFile>
         <testFileDir>src/test/resources/wetator</testFileDir>
-        <includePattern>
-          <includePattern>**/*.wet</includePattern>
-          <includePattern>**/*.wett</includePattern>
-        </includePattern>
-        <excludePattern>
-          <excludePattern>**/modules/**</excludePattern>
-        </excludePattern>
+        <includes>
+            <include>**/*.wet</include>
+            <include>**/*.wett</include>
+        </includes>
+        <excludes>
+            <exclude>**/modules/**</exclude>
+        </excludes>
     </configuration>
+    <executions>
+        <execution>
+            <phase>integration-test</phase>
+            <goals>
+                <goal>execute</goal>
+            </goals>
+        </execution>
+    </executions>
 </plugin>
 ```
 
 By default the plugin includes all \*.wet, \*.wett, \*.xls, \*.xlsx files within the 'testFileDir' folder.
 
-To run the tests run:
+To run the tests manually use:
 
 ```bash
 mvn org.wetator.maven:wetator-maven-plugin:execute
