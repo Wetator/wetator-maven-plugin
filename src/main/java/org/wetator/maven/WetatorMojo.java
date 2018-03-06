@@ -59,6 +59,7 @@ public class WetatorMojo extends AbstractMojo {
      * <p>
      * Default is: {@value DEFAULT_EXCLUDE_PATTERN}
      */
+    @Parameter
     private String[] excludes;
 
     /**
