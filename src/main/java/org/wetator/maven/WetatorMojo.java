@@ -15,7 +15,6 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.descriptor.PluginDescriptor;
-import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
@@ -38,10 +37,10 @@ public class WetatorMojo extends AbstractMojo {
     private static final String XLS_FILE_PATTERN = "**\\*.xls";
     private static final String XLSX_FILE_PATTERN = "**\\*.xlsx";
 
-    @Component
+    @Parameter(defaultValue = "${project}", readonly = true)
     private MavenProject project;
 
-    @Component
+    @Parameter(defaultValue = "${plugin}", readonly = true)
     private PluginDescriptor pluginDescriptor;
 
     /**
@@ -66,7 +65,8 @@ public class WetatorMojo extends AbstractMojo {
      * Filename patterns for the test files that shall be included.
      * <p>
      * Per default (when this is left empty) the following patterns are included:
-     * {@value #WET_FILE_PATTERN}, {@value #WETT_FILE_PATTERN}, {@value #XLS_FILE_PATTERN}, {@value #XLSX_FILE_PATTERN}
+     * {@value #WET_FILE_PATTERN}, {@value #WETT_FILE_PATTERN},
+     * {@value #XLS_FILE_PATTERN}, {@value #XLSX_FILE_PATTERN}
      */
     @Parameter
     private String[] includes;
@@ -173,7 +173,8 @@ public class WetatorMojo extends AbstractMojo {
      * Adds all classpath elements from the given scope to the classpath of this
      * plugin.
      *
-     * @param aClasspathScope scope
+     * @param aClasspathScope
+     *            scope
      */
     private void includeAdditionalDependenciesInClasspath(String aClasspathScope) {
         if (StringUtils.isEmpty(aClasspathScope)) {
