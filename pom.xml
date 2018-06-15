@@ -3,7 +3,7 @@
 
     <groupId>org.wetator.maven</groupId>
     <artifactId>wetator-maven-plugin</artifactId>
-    <version>1.1.3</version>
+    <version>1.1.4</version>
 
     <packaging>maven-plugin</packaging>
 
@@ -68,15 +68,16 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-core</artifactId>
-            <version>3.5.2</version>
-        </dependency>
+        <!-- Maven specifics -->
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
-            <version>3.5.2</version>
+            <version>3.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-core</artifactId>
+            <version>3.5.3</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.plugin-tools</groupId>
@@ -84,6 +85,8 @@
             <version>3.5.1</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Actual dependencies for our business logic -->
         <dependency>
             <groupId>org.codehaus.plexus</groupId>
             <artifactId>plexus-utils</artifactId>
@@ -94,6 +97,8 @@
             <artifactId>wetator</artifactId>
             <version>1.9.0</version>
         </dependency>
+
+        <!-- Test dependencies -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
