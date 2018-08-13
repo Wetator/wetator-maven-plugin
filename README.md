@@ -56,3 +56,7 @@ The wetator-maven-plugin is using the Wetator dependency:
     <version>1.8.0</version>
 </dependency>
 ```
+
+## Release notes
+### 1.1.5
+Now uses Wetator version 1.10.0
