@@ -15,7 +15,7 @@ To use the plugin you have to add to the `<build><plugins>` section of your `pom
 <plugin>
     <groupId>org.wetator.maven</groupId>
     <artifactId>wetator-maven-plugin</artifactId>
-    <version>1.1.4</version>
+    <version>1.17.0</version>
     <configuration>
         <configFile>src/test/resources/wetator.config</configFile>
         <testFileDir>src/test/resources/wetator</testFileDir>
