@@ -1,8 +1,16 @@
 # wetator-maven-plugin
 
+Version 1.17.0 / December 18, 2021
+
 This is a Maven plugin for executing Wetator tests.
 
 You can find the Wetator homepage at [http://www.wetator.org](http://www.wetator.org).
+
+:heart: [Sponsor](https://github.com/sponsors/rbri)
+
+## News
+
+[HtmlUnit@Twitter](https://twitter.com/HtmlUnit)
 
 ## Build Status
 [![Build Status](https://travis-ci.org/Wetator/wetator-maven-plugin.svg?branch=master)](https://travis-ci.org/Wetator/wetator-maven-plugin) [![Coverage Status](https://coveralls.io/repos/github/Wetator/wetator-maven-plugin/badge.svg?branch=master)](https://coveralls.io/github/Wetator/wetator-maven-plugin?branch=master)
@@ -58,5 +66,9 @@ The wetator-maven-plugin is using the Wetator dependency:
 ```
 
 ## Release notes
+### 1.17.0
+* moved to github
+* use Wetator 1.17.0
+
 ### 1.1.5
-Now uses Wetator version 1.10.0
+* use Wetator 1.10.0
