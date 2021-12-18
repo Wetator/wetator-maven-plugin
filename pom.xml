@@ -6,13 +6,9 @@
     <version>1.17.0</version>
 
     <packaging>maven-plugin</packaging>
-
     <name>wetator-maven-plugin Maven Plugin</name>
-
     <description>Plugin to run Wetator tests with Maven. The Wetator homepage: http://www.wetator.org</description>
-
     <url>https://github.com/Wetator/wetator-maven-plugin</url>
-
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -21,18 +17,15 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
     <issueManagement>
         <url>https://github.com/Wetator/wetator-maven-plugin/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
-
     <scm>
         <connection>scm:git:https://github.com/Wetator/wetator-maven-plugin.git</connection>
         <developerConnection>scm:git:https://github.com/Wetator/wetator-maven-plugin.git</developerConnection>
         <url>https://github.com/Wetator/wetator-maven-plugin</url>
     </scm>
-
     <distributionManagement>
         <repository>
             <id>sonatype-nexus-staging</id>
@@ -40,38 +33,11 @@
         </repository>
     </distributionManagement>
 
-    <developers>
-        <developer>
-            <id>Treppenhouse</id>
-            <name>Malte Mauelshagen</name>
-            <url>https://github.com/Treppenhouse</url>
-        </developer>
-        <developer>
-            <id>rbri</id>
-            <name>Ronald Brill</name>
-            <url>https://github.com/rbri</url>
-        </developer>
-        <developer>
-            <id>cheffe</id>
-            <name>Christian Effertz</name>
-            <url>https://github.com/cheffe</url>
-        </developer>
-    </developers>
-
-    <contributors>
-        <contributor>
-            <name>Michael Stähler</name>
-            <url>https://github.com/fred4jupiter</url>
-            <roles>
-                <role>original author</role>
-            </roles>
-        </contributor>
-    </contributors>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <dependencycheck.version>6.5.0</dependencycheck.version>
     </properties>
 
     <dependencies>
@@ -162,7 +128,67 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>${dependencycheck.version}</version>
+                <configuration>
+                    <suppressionFiles>owasp-suppressions.xml</suppressionFiles>
+                    <failBuildOnCVSS>0</failBuildOnCVSS>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            -->
         </plugins>
     </build>
+
+    <developers>
+        <developer>
+            <id>Treppenhouse</id>
+            <name>Malte Mauelshagen</name>
+            <url>https://github.com/Treppenhouse</url>
+        </developer>
+        <developer>
+            <id>rbri</id>
+            <name>Ronald Brill</name>
+            <url>https://github.com/rbri</url>
+        </developer>
+        <developer>
+            <id>cheffe</id>
+            <name>Christian Effertz</name>
+            <url>https://github.com/cheffe</url>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>Michael Stähler</name>
+            <url>https://github.com/fred4jupiter</url>
+            <roles>
+                <role>original author</role>
+            </roles>
+        </contributor>
+    </contributors>
 
 </project>
