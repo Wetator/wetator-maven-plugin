@@ -1,6 +1,6 @@
 # wetator-maven-plugin
 
-Version 2.1.0 / March 20, 2022
+Version 2.3.0 / Juny 27, 2022
 
 This is a Maven plugin for executing Wetator tests.
 
@@ -23,7 +23,7 @@ To use the plugin you have to add to the `<build><plugins>` section of your `pom
 <plugin>
     <groupId>org.wetator.maven</groupId>
     <artifactId>wetator-maven-plugin</artifactId>
-    <version>2.1.0</version>
+    <version>2.3.0</version>
     <configuration>
         <configFile>src/test/resources/wetator.config</configFile>
         <testFileDir>src/test/resources/wetator</testFileDir>
@@ -61,11 +61,17 @@ The wetator-maven-plugin is using the Wetator dependency:
 <dependency>
     <groupId>org.wetator</groupId>
     <artifactId>wetator</artifactId>
-    <version>2.1.0</version>
+    <version>2.3.0</version>
 </dependency>
 ```
 
 ## Release notes
+### 2.3.0
+* use Wetator 2.3.0
+
+### 2.2.0
+* use Wetator 2.2.0
+
 ### 2.1.0
 * use Wetator 2.1.0
 
