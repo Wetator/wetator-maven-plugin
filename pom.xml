@@ -3,7 +3,7 @@
 
     <groupId>org.wetator.maven</groupId>
     <artifactId>wetator-maven-plugin</artifactId>
-    <version>2.3.0</version>
+    <version>2.4.0</version>
 
     <packaging>maven-plugin</packaging>
     <name>wetator-maven-plugin Maven Plugin</name>
@@ -76,7 +76,7 @@
         <dependency>
             <groupId>org.wetator</groupId>
             <artifactId>wetator</artifactId>
-            <version>2.2.0</version>
+            <version>2.4.0</version>
         </dependency>
 
         <!-- Test dependencies -->
