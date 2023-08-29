@@ -3,7 +3,7 @@
 
     <groupId>org.wetator.maven</groupId>
     <artifactId>wetator-maven-plugin</artifactId>
-    <version>2.4.0</version>
+    <version>3.5.0</version>
 
     <packaging>maven-plugin</packaging>
     <name>wetator-maven-plugin Maven Plugin</name>
@@ -37,7 +37,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <dependencycheck.version>7.0.0</dependencycheck.version>
+        <dependencycheck.version>8.4.0</dependencycheck.version>
     </properties>
 
     <dependencies>
@@ -76,7 +76,7 @@
         <dependency>
             <groupId>org.wetator</groupId>
             <artifactId>wetator</artifactId>
-            <version>2.4.0</version>
+            <version>3.5.0</version>
         </dependency>
 
         <!-- Test dependencies -->
