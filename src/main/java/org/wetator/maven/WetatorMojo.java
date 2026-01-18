@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.AbstractMojo;
@@ -177,9 +176,10 @@ public class WetatorMojo extends AbstractMojo {
      *            scope
      */
     private void includeAdditionalDependenciesInClasspath(String aClasspathScope) {
-        if (StringUtils.isEmpty(aClasspathScope)) {
+        if (aClasspathScope == null || aClasspathScope.length() == 0) {
             return;
         }
+
         try {
             switch (aClasspathScope) {
             case Artifact.SCOPE_RUNTIME: {
