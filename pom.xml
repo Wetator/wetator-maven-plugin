@@ -26,18 +26,37 @@
         <developerConnection>scm:git:https://github.com/Wetator/wetator-maven-plugin.git</developerConnection>
         <url>https://github.com/Wetator/wetator-maven-plugin</url>
     </scm>
-    <distributionManagement>
+
+    <!-- for snapshots of our dependencies -->
+    <repositories>
         <repository>
-            <id>sonatype-nexus-staging</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+            <name>Central Portal Snapshots</name>
+            <id>central-portal-snapshots</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
-    </distributionManagement>
+    </repositories>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
+        <maven.version.ignore>(?i).*-(alpha|beta|m|rc)([\.-]?\d+)?</maven.version.ignore>
+
         <dependencycheck.version>10.0.4</dependencycheck.version>
+
+        <!-- plugins -->
+        <central-publishing-plugin.version>0.10.0</central-publishing-plugin.version>
+
+        <gpg-plugin.version>3.2.8</gpg-plugin.version>
+        <source-plugin.version>3.4.0</source-plugin.version>
+        <javadoc-plugin.version>3.12.0</javadoc-plugin.version>
     </properties>
 
     <dependencies>
@@ -111,6 +130,36 @@
                 <version>3.0.1</version>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${javadoc-plugin.version}</version>
+                <configuration>
+                    <quiet>true</quiet>
+                    <detectLinks>true</detectLinks>
+                    <detectJavaApiLink>true</detectJavaApiLink>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
@@ -133,7 +182,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${gpg-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>verify</phase>
@@ -142,6 +191,16 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.10.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                </configuration>
             </plugin>
 
 <!--
